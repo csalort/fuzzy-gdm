@@ -19,15 +19,12 @@ def plot_simulation_results(path, plot_p):
         vals.append(subdf[column].tolist())
         xs.append(np.random.normal(i + 1, 0.04, subdf.shape[0]))
     plt.figure('Simulation')
-    # plt.box(False)
     plt.boxplot(vals, labels=names)
-    ngroup = len(vals)
-    clevels = np.linspace(0., 1., ngroup)
-    for x, val, clevel in zip(xs, vals, clevels):
-        plt.scatter(x, val, alpha=0.2, color='g', s=10)
     plt.title('Risk simulation')
     plt.xlabel('Values over the threshold')
     plt.ylabel('Associated risk')
+    plt.hlines(45, 0, 30, alpha=0.2, color='blue')
+    plt.vlines(6.5, 10, 100, alpha=0.2, color='blue')
     plt.savefig(plot_p + 'simulation.jpg', format='png', figsize=(16, 16), dpi=200)
 
 
